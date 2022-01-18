@@ -10,7 +10,14 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations = {
+ *          "create_user" = {
+                "method" = "post",
+ *              "controller" = App\Controller\Api\UserController::class
+ *          }
+ *     }
+ * )
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
