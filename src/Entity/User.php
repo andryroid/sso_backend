@@ -7,16 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
  *     collectionOperations = {
  *          "create_user" = {
+ *              "normalization_context" = {"groups" = {"read:created_user"}},
                 "method" = "post",
  *              "controller" = App\Controller\Api\User\UserController::class,
- *              "path" = "/users/create_user",
- *              "write" = true
+ *              "path" = "/users/create_user"
  *          }
  *     }
  * )
@@ -27,16 +28,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:created_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"read:created_user"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"read:created_user"})
      */
     private $roles = [];
 
@@ -48,6 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups({"read:created_user"})
      */
     private $created_at;
 
