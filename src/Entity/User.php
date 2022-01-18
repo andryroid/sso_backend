@@ -15,11 +15,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ApiResource(
  *     itemOperations = {
-            "get"
- *     }
- *     ,
+ *           "get"
+ *     },
  *     collectionOperations = {
- *          "post"
+ *          "post",
  *          "create_user" = {
  *              "normalization_context" = {"groups" = {"read:created_user"}},
                 "method" = "post",
