@@ -11,11 +11,48 @@
             "./config/routes/annotations.yaml"
         ]
     },
+    "doctrine/cache": {
+        "version": "2.1.1"
+    },
+    "doctrine/collections": {
+        "version": "1.6.8"
+    },
+    "doctrine/dbal": {
+        "version": "3.3.0"
+    },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
+    "doctrine/doctrine-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.4",
+            "ref": "f98f1affe028f8153a459d15f220ada3826b5aa2"
+        },
+        "files": [
+            "./config/packages/doctrine.yaml",
+            "./config/packages/prod/doctrine.yaml",
+            "./config/packages/test/doctrine.yaml",
+            "./src/Entity/.gitignore",
+            "./src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/event-manager": {
+        "version": "1.1.1"
+    },
     "doctrine/inflector": {
         "version": "2.0.4"
     },
     "doctrine/lexer": {
         "version": "1.2.2"
+    },
+    "doctrine/persistence": {
+        "version": "2.3.0"
+    },
+    "doctrine/sql-formatter": {
+        "version": "1.1.2"
     },
     "lcobucci/clock": {
         "version": "2.0.0"
@@ -107,6 +144,9 @@
     },
     "symfony/deprecation-contracts": {
         "version": "v2.5.0"
+    },
+    "symfony/doctrine-bridge": {
+        "version": "v5.4.2"
     },
     "symfony/doctrine-messenger": {
         "version": "v5.4.0"
