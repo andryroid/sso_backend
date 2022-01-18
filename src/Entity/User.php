@@ -18,7 +18,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *           "get"
  *     },
  *     collectionOperations = {
- *          "post",
  *          "create_user" = {
  *              "normalization_context" = {"groups" = {"read:created_user"}},
                 "method" = "post",
