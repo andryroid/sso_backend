@@ -3,6 +3,7 @@
 namespace App\Controller\Api\User;
 
 use ApiPlatform\Core\Util\RequestAttributesExtractor;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,17 +39,17 @@ class UserController extends AbstractController
         $action = $attribute['collection_operation_name'] ?? $attribute['item_operation_name'] ?? null;
         if (!is_null($action)) {
             if ($action === "create_user") {
-                return $this->createUser($request);
+                return $this->createUser($data,$request);
             }
         }
     }
 
-
-    /**
-     * @param User $user
-     * @param Request $request
-     */
-    public function createUser(User $user,Request $request){
-
+    public function createUser($data,Request $request){
+        /** @var User $user */
+        $user = $data;
+        $user->setPassword(
+            $this->userPasswordHarsher->hashPassword($user,$user->getPassword())
+        );
+        return $user;
     }
 }

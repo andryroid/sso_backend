@@ -15,7 +15,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *          "create_user" = {
                 "method" = "post",
  *              "controller" = App\Controller\Api\User\UserController::class,
- *              "path" = "/users/create_user"
+ *              "path" = "/users/create_user",
+ *              "write" = true
  *          }
  *     }
  * )
@@ -53,6 +54,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __construct()
+    {
+        $this->setCreatedAt(\DateTimeImmutable::createFromMutable(new \DateTime()));
     }
 
     public function getEmail(): ?string
