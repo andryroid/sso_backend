@@ -14,7 +14,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     collectionOperations = {
  *          "create_user" = {
                 "method" = "post",
- *              "controller" = App\Controller\Api\UserController::class
+ *              "controller" = App\Controller\Api\User\UserController::class,
+ *              "path" = "/users/create_user"
  *          }
  *     }
  * )
