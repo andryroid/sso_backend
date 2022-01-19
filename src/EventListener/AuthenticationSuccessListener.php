@@ -6,7 +6,6 @@ namespace App\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
-use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 use Symfony\Component\Security\Core\Security;
 
 class AuthenticationSuccessListener
@@ -38,25 +37,4 @@ class AuthenticationSuccessListener
             'token' => $event->getData()['token']
         ]);
     }
-
-    /**
-     * @param JWTCreatedEvent $event
-     *
-     * @return void
-     */
-    public function onJWTCreated(JWTCreatedEvent $event)
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        $payload       = $event->getData();
-        $payload['id'] = $this->security->getUser()->getUserIdentifier();
-
-        $event->setData($payload);
-
-        /*$header        = $event->getHeader();
-        $header['cty'] = 'JWT';
-
-        $event->setHeader($header);*/
-    }
-
 }
