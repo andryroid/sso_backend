@@ -44,7 +44,7 @@ class JWTCreatedListener
         $redirectUrl = $this->requestStack->getCurrentRequest()->get('redirectUrl') ? $this->requestStack->getCurrentRequest()->get('redirectUrl') : "defaultUrl";
 
         //get current user
-        $user = $this->userRepository->findOneBy(['username' => $this->security->getUser()->getUserIdentifier()]);
+        $user = $this->userRepository->findOneBy(['email' => $this->security->getUser()->getUserIdentifier()]);
 
         //custom jwt's content
         $payload       = $event->getData();
