@@ -48,8 +48,7 @@ class JWTCreatedListener
 
         //custom jwt's content
         $payload       = $event->getData();
-        //dummy example
-        $payload['url_redirect'] = $redirectUrl;
+        //custom dummy example
         $payload['user_id'] = $user->getId();
 
         $event->setData($payload);
