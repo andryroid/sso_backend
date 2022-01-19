@@ -3,6 +3,7 @@ namespace App\EventListener;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Security;
 
 class JWTCreatedListener
 {
@@ -10,13 +11,19 @@ class JWTCreatedListener
      * @var RequestStack
      */
     private $requestStack;
+    /**
+     * @var Security
+     */
+    private $security;
 
     /**
      * @param RequestStack $requestStack
+     * @param Security $security
      */
-    public function __construct(RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack,Security $security)
     {
         $this->requestStack = $requestStack;
+        $this->security = $security;
     }
 
     /**
